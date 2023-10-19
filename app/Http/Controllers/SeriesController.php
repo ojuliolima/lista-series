@@ -19,11 +19,8 @@ class SeriesController extends Controller
     }
 
     public function store(Request $resquest) {
-        $nomeSerie = $resquest->input('nome');
-        $serie = new Serie();
-        $serie->name = $nomeSerie;
-        $serie->save();
+        Serie::create($resquest->all());
 
-        return redirect('/series');
+        return to_route('serie.index');
     }
 }
